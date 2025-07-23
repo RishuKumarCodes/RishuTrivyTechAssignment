@@ -2,20 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import YoloPayIcn from '../../assets/icons/YoloPayIcn';
 
-const YoloPay = () => {
+const YoloPay = ({ active, onPress }) => {
   return (
-    <TouchableOpacity style={styles.Container}>
-      <View style={[styles.IcnWrapper]}>
+    <TouchableOpacity
+      style={styles.Container}
+      onPress={onPress}
+      activeOpacity={0}
+    >
+      <View style={[styles.IcnWrapper, active && { backgroundColor: '#fff' }]}>
         <View style={styles.Button}>
-          <YoloPayIcn />
+          <View style={{ opacity: active ? 1 : 0.3 }}>
+            <YoloPayIcn />
+          </View>
         </View>
       </View>
-      <Text style={[styles.Label]}>yolo pay </Text>
+      <Text style={[styles.Label, active && { color: '#fff' }]}>yolo pay</Text>
     </TouchableOpacity>
   );
 };
 
 export default YoloPay;
+
 const styles = StyleSheet.create({
   Container: {
     width: 54,
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
     height: 55,
     borderRadius: 84,
     padding: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#252525',
     paddingBottom: 0,
     paddingHorizontal: 0.4,
   },
@@ -41,8 +48,7 @@ const styles = StyleSheet.create({
   Label: {
     fontFamily: 'Poppins-Regular',
     fontSize: 12,
-
-    color: '#fff',
+    color: '#555555',
     textAlign: 'center',
   },
 });

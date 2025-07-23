@@ -2,20 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import HomeIcn from '../../assets/icons/HomeIcn';
 
-const GinieBtn = () => {
+const HomeBtn = ({ active, onPress }) => {
   return (
-    <TouchableOpacity style={styles.Container}>
-      <View style={[styles.IcnWrapper]}>
+    <TouchableOpacity style={styles.Container} onPress={onPress}>
+      <View style={[styles.IcnWrapper, active && { backgroundColor: '#fff' }]}>
         <View style={styles.Button}>
-          <HomeIcn color={'#555555'} />
+          <HomeIcn color={active ? '#fff' : '#555555'} />
         </View>
       </View>
-      <Text style={[styles.Label]}>home</Text>
+      <Text style={[styles.Label, active && { color: '#fff' }]}>home</Text>
     </TouchableOpacity>
   );
 };
 
-export default GinieBtn;
+export default HomeBtn;
+
 const styles = StyleSheet.create({
   Container: {
     width: 44,
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
   Label: {
     fontFamily: 'Poppins-Regular',
     fontSize: 12,
-
     color: '#555555',
     textAlign: 'center',
   },

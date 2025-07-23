@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, StatusBar, SafeAreaView } from 'react-native';
-import CardSection from './components/CardSection';
-import BottomNavigation from './components/BottomNavigation';
-import Header from './components/Header';
+import CardSection from '../components/CardSection';
+import Header from '../components/Header';
 
 const PaymentScreen = () => {
   return (
@@ -10,7 +9,6 @@ const PaymentScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       <Header />
       <CardSection />
-      <BottomNavigation />
     </SafeAreaView>
   );
 };

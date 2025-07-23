@@ -1,46 +1,45 @@
-import { StyleSheet, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import CurvedNavbarLine from '../assets/icons/CurvedNavbarLine';
-import YoloPay from './ui/YoloPay';
+import YoloPayBtn from './ui/YoloPay';
 import GinieBtn from './ui/GinieBtn';
 import HomeBtn from './ui/HomeBtn';
 
-const BottomNavigation = () => {
+export default function BottomNavigation({ state, navigation }) {
+  const currentRoute = state.routes[state.index].name;
+
   return (
     <View style={styles.bottomNav}>
-      <HomeBtn />
-      <YoloPay />
-      <GinieBtn />
+      <HomeBtn
+        active={currentRoute === 'Home'}
+        onPress={() => navigation.navigate('Home')}
+      />
+      <YoloPayBtn
+        active={currentRoute === 'Payment'}
+        onPress={() => navigation.navigate('Payment')}
+      />
+      <GinieBtn
+        active={currentRoute === 'Ginie'} 
+        onPress={() => navigation.navigate('Ginie')}
+      />
 
       <View style={styles.navbarCurve}>
         <CurvedNavbarLine />
       </View>
     </View>
   );
-};
-
-export default BottomNavigation;
+}
 
 const styles = StyleSheet.create({
   bottomNav: {
     position: 'relative',
+    backgroundColor:"#000",
     height: 108,
     paddingHorizontal: 34,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'flex-end',
     paddingBottom: 12,
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navLabel: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    marginTop: 4,
-  },
-  navLabelActive: {
-    color: '#FFF',
   },
   navbarCurve: {
     position: 'absolute',

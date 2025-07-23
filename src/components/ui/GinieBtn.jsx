@@ -2,20 +2,25 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GineIcn from '../../assets/icons/GinieIcn';
 
-const GinieBtn = () => {
+const GinieBtn = ({ active, onPress }) => {
+  const iconColor = active ? '#fff' : '#555555';
+  const wrapperBg = active ? '#fff' : '#252525';
+  const labelColor = active ? '#fff' : '#555555';
+
   return (
-    <TouchableOpacity style={styles.Container}>
-      <View style={[styles.IcnWrapper]}>
+    <TouchableOpacity style={styles.Container} onPress={onPress}>
+      <View style={[styles.IcnWrapper, { backgroundColor: wrapperBg }]}>
         <View style={styles.Button}>
-          <GineIcn color={'#555555'} />
+          <GineIcn color={iconColor} />
         </View>
       </View>
-      <Text style={[styles.Label]}>gine</Text>
+      <Text style={[styles.Label, { color: labelColor }]}>gine</Text>
     </TouchableOpacity>
   );
 };
 
 export default GinieBtn;
+
 const styles = StyleSheet.create({
   Container: {
     width: 44,
@@ -25,7 +30,6 @@ const styles = StyleSheet.create({
     height: 44,
     borderRadius: 84,
     padding: 1,
-    backgroundColor: '#252525',
     paddingBottom: 0,
     paddingHorizontal: 0.4,
   },
@@ -41,8 +45,6 @@ const styles = StyleSheet.create({
   Label: {
     fontFamily: 'Poppins-Regular',
     fontSize: 12,
-
-    color: '#555555',
     textAlign: 'center',
   },
 });
